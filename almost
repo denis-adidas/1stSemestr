@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main() {
+    char str[] = "prostp stroka brrrr fgjdkgjdk";
+    int i = 0, j = 0, k = 0, len = 0;
+    while (str[k] != 0) {
+        k++;
+    }
+    printf("%d", k);
+
+    while (i <= k) {
+        if ((str[i] == ' ') || (str[i] == 0))  {
+            if ((str[i-1] != 'A') || (str[i-1] != 'a') || (str[i-1] != 'E') || (str[i-1] != 'e') || (str[i-1] != 'I') || (str[i-1] != 'i') || (str[i-1] != 'O') || (str[i-1] != 'o') || (str[i-1] != 'u') || (str[i-1] != 'U') || (str[i-1] != 'Y') || (str[i-1] != 'y') ) {
+                j = i;
+                while (str[j] != ' ') {
+                    j--;
+                }
+                while (j != i) {
+                    printf("%c", str[j]);
+                    j++;
+                }
+            }
+
+        }
+        i++;
+    }
+
+
+}
