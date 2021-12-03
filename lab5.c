@@ -40,7 +40,7 @@ int min_word_index(char* s) {
     if (id == 0) {
         id = mlen;
     }
-    return (id, mlen);
+    return (id);
 }
 
 int main() {
