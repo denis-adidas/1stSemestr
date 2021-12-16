@@ -6,7 +6,6 @@ void printw(char* word) {
         printf("%c", word[j]);
     }
 }
-
 int len(char* word) {
     int len = 0;
     while (word[len] != '\0') {
@@ -15,20 +14,20 @@ int len(char* word) {
     return len;
 }
 
-void* mem(int size) {
+void* memory(int size) {
     void* temp = malloc(size);
     if (temp == NULL) {
-        printf("No memory!!!");
+        printf("Lack of memory");
         exit(1);
     }
     return temp;
 }
 
-void* resize(void* mem, int newSize) {
-    void* temp = realloc(mem, newSize);
+void* resize(void* memory, int newSize) {
+    void* temp = realloc(memory, newSize);
     if (temp == NULL) {
-        printf("No memory!!!");
-        free(mem);
+        printf("Lack of memory");
+        free(memory);
         exit(1);
     }
     return temp;
@@ -41,10 +40,10 @@ int main() {
     printf("Enter string:\n");
 
     int wordsSize = 20, wordsIndex = 0;
-    char** words = (char**)mem(sizeof(char*) * wordsSize);
+    char** words = (char**)memory(sizeof(char*) * wordsSize);
 
     int tempWordSize = 10, tempWordInd = 0;
-    char* tempWord = (char*)mem(sizeof(char)*tempWordSize);
+    char* tempWord = (char*)memory(sizeof(char)*tempWordSize);
 
     while((c = getchar()) != '\0') {
 
@@ -60,7 +59,7 @@ int main() {
             }
 
             words[wordsIndex++] = tempWord;
-            tempWord = (char*)mem(sizeof(char) * (tempWordSize=10));
+            tempWord = (char*)memory(sizeof(char) * (tempWordSize=10));
             tempWordInd = 0;
 
             if (c == '\n') {
@@ -81,7 +80,7 @@ int main() {
     printf("Enter word:\n");
 
     int wordSize = 10, wordInd = 0;
-    char* word = (char*)mem(sizeof(char) * wordSize);
+    char* word = (char*)memory(sizeof(char) * wordSize);
 
     while ((c = getchar()) != '\n') {
         if (wordInd + 1 >= wordSize) {
@@ -105,11 +104,11 @@ int main() {
             ii = i;
         }
     }
-
     for (int i = 0; i < wordsIndex; i++) {
         if (i == ii) {
             printf("%s", word);
             printf(" ");
+            if(i == wordsIndex-1) break;
             i++;
         }
         printw(words[i]);
